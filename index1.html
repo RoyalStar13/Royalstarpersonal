@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: #f5f7fa;
+        }
+
+        header {
+            background: #fff;
+            padding: 20px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            display: inline-block;
+            padding: 10px;
+            border-radius: 50%; /* Makes it circular */
+            background-color: #fff; /* Background color */
+            transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            background-color: #007bff; /* Background color on hover or active */
+            color: #fff; /* Text color on hover or active */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Shadow effect on click */
+        }
+
+        .btn-download {
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #007bff;
+            color: #007bff;
+            border-radius: 5px;
+        }
+
+        .hero {
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            color: #fff;
+            padding: 60px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hero-text {
+            max-width: 50%;
+        }
+
+        .hero-text p {
+            margin: 10px 0;
+        }
+
+        .hero-text h1 {
+            font-size: 3em;
+            margin: 20px 0;
+        }
+
+        .highlight {
+            color: #00c6ff;
+            background: #fff;
+            padding: 0 10px;
+            border-radius: 5px;
+        }
+
+        .hero-buttons a {
+            text-decoration: none;
+            margin-right: 10px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #007bff;
+            color: #fff;
+        }
+
+        .btn-secondary {
+            border: 1px solid #fff;
+            color: #fff;
+        }
+
+        .hero-image img {
+            border-radius: 50%;
+            max-width: 200px;
+        }
+
+        footer {
+            background: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .conteudo {
+            display: inline-flex;
+            border-bottom: 4px solid #EFEFEF;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .conteudo img {
+            width: 60px;
+            filter: drop-shadow(0px 0px 1px #4b4b50);
+            animation: flutuar 3s linear infinite;
+        }
+
+        @keyframes flutuar {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-23px);
+            }
+        }
+
+        .conteudo img:nth-child(2) {
+            animation-delay: .2s;
+        }
+
+        .conteudo img:nth-child(3) {
+            animation-delay: .4s;
+        }
+
+        .conteudo img:nth-child(4) {
+            animation-delay: .6s;
+        }
+
+        .conteudo img:nth-child(5) {
+            animation-delay: .85s;
+        }
+
+        .social-links a {
+            text-decoration: none;
+            color: #007bff;
+            margin: 0 10px;
+        }
+
+        /* Media Queries for Specific Mobile Sizes */
+        @media (max-width: 414px) {
+            .container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-text {
+                max-width: 100%;
+            }
+
+            .hero-image {
+                margin-top: 20px;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                margin-top: 10px;
+                padding: 0;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+                cursor: pointer;
+                font-size: 1.5em;
+                color: #007bff;
+                margin-top: 10px;
+            }
+
+            .btn-download {
+                margin-top: 10px;
+            }
+        }
+
+        /* Hide menu toggle on larger screens */
+        @media (min-width: 415px) {
+            .menu-toggle {
+                display: none;
+            }
+
+            nav ul {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Royal_Of_Illegal</div>
+            <nav>
+                <div class="menu-toggle" onclick="toggleMenu()">☰MENU</div>
+                <ul>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contactme.html">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="#" class="btn-download">Download CV</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-text">
+                <p>Chethan_RoyalStar</p>
+                <h1>I'm <span class="highlight">H43K3R</span></h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn-primary">Hire Me</a>
+                    <a href="#" class="btn-secondary">Download CV</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://res.cloudinary.com/dl8dmkhmv/image/upload/v1720425576/20240629_174053_a3rr4f.jpg" alt="Profile Picture">
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="conteudo">
+            <img src="./ic-html.png" alt="HTML Icon">
+            <img src="./ic-css.png" alt="CSS Icon">
+            <img src="./ic-js.png" alt="JS Icon">
+            <img src="./ic-git.png" alt="Git Icon">
+            <img src="./ic-react.png" alt="React Icon">
+        </div>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.instagram.com/royal_of_illegal?igsh=Ynprd3BubXB1bmd4">Instagram</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navUl = document.querySelector('nav ul');
+            navUl.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

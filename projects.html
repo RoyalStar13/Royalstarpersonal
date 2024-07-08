@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Card Carousel with Video Background</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: white;
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        nav {
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            position: fixed;
+            top: 0;
+            z-index: 2;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 414px; /* Adjust based on maximum dimension */
+            z-index: 1;
+            margin-top: 60px; /* Adjust for navbar height */
+        }
+
+        .carousel {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+        }
+
+        .card {
+            flex: 0 0 auto;
+            width: 80%; /* Adjust based on desired card size */
+            margin: 0 10px;
+            background-color: rgba(43, 43, 43, 0.8); /* Slightly transparent */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            scroll-snap-align: center;
+            position: relative;
+        }
+
+        .card img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+        }
+
+        .card h2 {
+            margin: 10px 0;
+        }
+
+        .card p {
+            margin: 10px 0;
+        }
+
+        .card button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .card button:hover {
+            background-color: #0056b3;
+        }
+
+        .name-buttons {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .name-buttons button {
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            padding: 10px 20px;
+        }
+
+        .name-buttons button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Media Queries */
+        @media (max-width: 375px) {
+            .carousel-container {
+                max-width: 375px;
+            }
+        }
+
+        @media (max-width: 414px) {
+            .carousel-container {
+                max-width: 414px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .carousel-container {
+                max-width: 360px;
+            }
+        }
+
+        @media (max-width: 390px) {
+            .carousel-container {
+                max-width: 390px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <video class="background-video" autoplay muted loop>
+        <source src="https://res.cloudinary.com/dl8dmkhmv/video/upload/v1720439230/YouCut_20240708_171626468_sin7at.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    
+    <nav>
+        <a href="index1.html">GO BACK HOME</a>
+        <a href="projects.html">PROJECTS</a>
+        <a href="#">ABOUT</a>
+        <a href="contactme.html">CONTACT</a>
+    </nav>
+
+    <div class="carousel-container">
+        <div class="carousel">
+            <div class="card">
+                <img src="profile1.jpg" alt="James Wilson">
+                <h2>James Wilson</h2>
+                <p>Software Developer</p>
+                <button>Message</button>
+            </div>
+            <div class="card">
+                <img src="profile2.jpg" alt="Zoe Olivia">
+                <h2>Zoe Olivia</h2>
+                <p>Fashion Designer</p>
+                <button>Message</button>
+            </div>
+            <div class="card">
+                <img src="profile3.jpg" alt="David Brown">
+                <h2>David Brown</h2>
+                <p>Graphic Designer</p>
+                <button>Message</button>
+            </div>
+        </div>
+        <div class="name-buttons">
+            <button onclick="scrollToCard(0)">James Wilson</button>
+            <button onclick="scrollToCard(1)">Zoe Olivia</button>
+            <button onclick="scrollToCard(2)">David Brown</button>
+        </div>
+    </div>
+
+    <script>
+        let scrollAmount = 0;
+        const slide = (direction) => {
+            const carousel = document.querySelector('.carousel');
+            const cardWidth = document.querySelector('.card').clientWidth;
+            const gap = 20; // margin on either side of the cards
+
+            scrollAmount += (cardWidth + gap) * direction;
+            carousel.scrollTo({
+                top: 0,
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+
+        const scrollToCard = (index) => {
+            const carousel = document.querySelector('.carousel');
+            const cardWidth = document.querySelector('.card').clientWidth;
+            const gap = 20; // margin on either side of the cards
+
+            scrollAmount = (cardWidth + gap) * index;
+            carousel.scrollTo({
+                top: 0,
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
